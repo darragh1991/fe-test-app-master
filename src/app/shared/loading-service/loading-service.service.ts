@@ -1,7 +1,8 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 /**
- * Cant implement due to mat-paginator undefined issue
+ * Difficult to implement due to mat-paginator undefined issue.. could of asked
+ * for svg's and done custom paginator via api call...
  */
 @Injectable({
   providedIn: 'root'

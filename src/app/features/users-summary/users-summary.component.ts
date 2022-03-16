@@ -73,10 +73,6 @@ export class UsersSummaryComponent implements OnDestroy, AfterViewInit {
     });
   }
 
-  sayHi() {
-    console.log('hello');
-  }
-
   private retrieveStatusId(id_status: number): string {
     return this.statusData[id_status - 1].id === 3 ? 'Inactive' : this.statusData[id_status - 1].description
   }

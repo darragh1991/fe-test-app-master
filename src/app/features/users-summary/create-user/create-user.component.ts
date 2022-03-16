@@ -14,14 +14,15 @@ import { Router } from '@angular/router';
 export class CreateUserComponent implements OnInit, OnDestroy {
 
   @Input() cleanData: CleanData[];
+
   private uniqueUsernameObservable$: Subscription;
-  private readonly SPECIAL_CHARACTER_PATTERN = /^[^{}"\[\].!]+$/;
   private mockError = {
     maxlength: false,
     required: false,
     notUnique: false
   };
   private newUserData: CleanData;
+  private readonly SPECIAL_CHARACTER_PATTERN = /^[^{}"\[\].!]+$/;
   private readonly usernameMaxlength: number = 20;
   private readonly usernameMinlength: number = 3;
 
@@ -60,10 +61,6 @@ export class CreateUserComponent implements OnInit, OnDestroy {
 
   naviagteToUserSummary() {
     this._router.navigate(['users']);
-  }
-
-  checkForm() {
-    console.log(this.createUserForm.get('username').errors)
   }
 
   sendForm() {
