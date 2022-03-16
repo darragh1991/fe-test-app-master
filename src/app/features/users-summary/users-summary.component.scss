@@ -1,0 +1,96 @@
+$small-laptop-width: 1024px;
+$tablet-width: 768px;
+$mobile-width: 425px;
+
+@mixin resetFlex {
+  @media only screen and (max-width: $small-laptop-width) {
+    flex: 1;
+  }
+}
+
+.mock-user-table {
+  mat-header-cell, mat-cell {
+    padding-right: 1.5px;
+    text-overflow: ellipsis;
+  }
+}
+
+
+.user-summary-before-table-section {
+  mat-select{
+    width: 45px;
+    height: 20px;
+    box-shadow: 0 4px 3px -4px grey;
+    margin-right: 4px;
+  }
+  > button {
+    margin: 12px;
+    background-color: var(--primary-button);
+}
+}
+
+
+.mat-row {
+  .active {
+    color: #087830;
+  }
+  .inactive {
+    color: #fe2712;
+  }
+  +:nth-child(odd) {
+    background-color: #E6E6E6;
+  }
+  min-height: 34px;
+}
+
+.mat-row-status {
+  flex: .15 1 2%;
+  @include resetFlex();
+  @media only screen and (max-width: $small-laptop-width) {
+    display: none;
+  }
+}
+
+.mat-row-username {
+  flex: .2 1 2%;
+  @include resetFlex();
+  &, ::first-letter {
+    text-transform: capitalize !important;
+  }
+}
+
+.mat-row-email {
+  flex: .2 1 7%;
+  @include resetFlex();
+  @media only screen and (max-width: $tablet-width) {
+    display: none;
+  }
+}
+
+.mat-row-name {
+  flex: .2 1 5%;
+  @include resetFlex();
+}
+
+.mat-row-created-date {
+  flex-shrink: 2 .8 min-content;
+  @media only screen and (max-width: $small-laptop-width) {
+    @include resetFlex()
+  }
+  @media only screen and (max-width:  $tablet-width) {
+    display: none;
+  }
+}
+
+.user-summary-container {
+  padding: 50px 0 50px 0;
+}
+
+.selection-conatiner {
+  display: flex;
+  align-items: center;
+  padding-right: 12px;
+}
+::ng-deep .cdk-overlay-pane {
+  margin-top: 20px!important;
+}

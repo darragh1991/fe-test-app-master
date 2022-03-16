@@ -1,0 +1,78 @@
+<ng-conatiner class="user-summary-container">
+    <section class="space-between-global user-summary-before-table-section">
+      <button mat-flat-button color="primary" routerLink="create">NEW USER</button>
+      <div class="selection-conatiner">
+        <mat-select [(value)]="rowCount" (selectionChange)="rowSelectionChange($event)" [disableOptionCentering]="true">
+          <mat-option *ngFor="let row of pageSizeOptions" [value]="row">{{row}}</mat-option>
+        </mat-select>
+        <span [attr.aria-labelledby]="rowCount + 'rows selected'">rows</span>
+      </div>
+    </section>
+    <div class="mock-table mat-elevation-z8">
+      <mat-table class="mock-user-table"
+                matSort
+                [fixedLayout]="true"
+                [needsPositionStickyOnElement]="true"
+                [dataSource]="dataSource">
+      <ng-container class="content-container">
+        <!-- Username Column -->
+          <ng-container matColumnDef="username">
+            <mat-header-cell mat-sort-header class="mat-row-username" *matHeaderCellDef> Username </mat-header-cell>
+            <mat-cell class="mat-row-username"
+                      *matCellDef="let element; let index = index"
+                      [attr.aria-labelledby]="'status_'+element.username + '_' + index"
+                      [attr.id]="'username_row_'+index"> {{element.username}} </mat-cell>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="fullName">
+            <mat-header-cell mat-sort-header class="mat-row-name" *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell class="mat-row-name"
+                      *matCellDef="let element; let index = index;"
+                      [attr.aria-labelledby]="'status_'+element.fullname + '_' + index"
+                      [attr.id]="'fullname_row_'+index"> {{element.fullName}} </mat-cell>
+          </ng-container>
+
+          <!-- Email Column -->
+          <ng-container matColumnDef="email">
+            <mat-header-cell mat-sort-header class="mat-row-email" *matHeaderCellDef> Email </mat-header-cell>
+            <mat-cell class="mat-row-email"
+                      *matCellDef="let element; let index = index"
+                      [attr.id]="'email_row_'+index"
+                      [attr.aria-labelledby]="'status_'+element.email + '_' + index"> {{element.email}}
+          </mat-cell>
+          </ng-container>
+
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <mat-header-cell mat-sort-header class="mat-row-status" *matHeaderCellDef> Status</mat-header-cell>
+            <mat-cell class="mat-row-status"
+                      *matCellDef="let element; let index = index"
+                      [attr.id]="'status_row_'+index"
+                      [attr.aria-labelledby]="'status_'+ element.status + '_' + index"
+                      [ngClass]="{'active': element.id_status === 1,
+                      'inactive': element.id_status === 3}">{{element.status}}
+            </mat-cell>
+          </ng-container>
+
+          <!-- Date Created Column -->
+          <ng-container matColumnDef="dateCreated">
+            <mat-header-cell mat-sort-header class="mat-row-created-date" *matHeaderCellDef> Date Created </mat-header-cell>
+            <mat-cell class="mat-row-created-date"
+                      [attr.id]="'date_created_row_'+index"
+                      [attr.aria-labelledby]="'status_'+ element.created_date + '_' + index"
+                      *matCellDef="let element; let index = index"> {{element.created_date | date: 'yyyy-MM-dd'}}</mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </ng-container>
+      </mat-table>
+      <mat-paginator
+        #paginator
+        [(pageSize)]="rowCount"
+        showFirstLastButtons
+        hidePageSize="true"
+        aria-label="Select page">
+      </mat-paginator>
+    </div>
+</ng-conatiner>

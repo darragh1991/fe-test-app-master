@@ -1,0 +1,54 @@
+$mobile-width: 425px;
+
+.create-user-conatiner {
+  display: block;
+  position: relative;
+  margin: 40px;
+
+  .create-user-form-conatiner {
+    border: 0.5px solid lightgray;
+
+  &, .full-wdith-row {
+    padding: 12px;
+    display: block;
+
+  .full-name-fields-section {
+    display: block;
+    margin: auto;
+    & .half-width-row {
+      display: inline-block;
+      width: 50%;
+      box-sizing: border-box;
+      padding: 12px;
+      @media only screen and (max-width: $mobile-width) {
+          width: 100%;
+    }
+  }
+}
+}
+}
+
+}
+#cancel_button {
+  box-shadow: #E6E6E6;
+  background-color: rgba(0,0,0,.12);
+  color: grey;
+}
+#create-user-header {
+  margin-bottom: 12px;
+}
+.activeButton {
+  background-color: var(--primary-button);
+  color: white;
+}
+.create-user-button-container {
+  padding-top: 12px;
+}
+@media only screen and (max-width: $mobile-width) {
+  .create-user-name-section{
+    flex-direction: column !important;
+  }
+}
+::ng-deep .mat-form-field-underline {
+  background-color: #B8B8B8 !important;
+}

@@ -1,0 +1,11 @@
+:host {
+  --primary-button: #6699cc;
+}
+
+::ng-deep .space-between-global {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+

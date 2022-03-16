@@ -1,0 +1,41 @@
+<div class="create-user-conatiner">
+  <h3 id="create-user-header">Add New User</h3>
+  <div class="create-user-form-conatiner">
+    <mat-form class="create-user-form" [formGroup]="createUserForm">
+      <mat-form-field class="full-wdith-row" appearance="legacy">
+        <mat-label for="username">Username</mat-label>
+        <input matInput maxlength="21" [attr.id]="'username_input'" formControlName="username">
+        <mat-error  *ngIf="hasError('username')">{{getUsernameErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <section class="full-name-fields-section">
+        <mat-form-field class="half-width-row" appearance="legacy">
+          <mat-label for="firstName">First Name</mat-label>
+          <input matInput maxlength="21" [attr.id]="'first_name_input'"  formControlName="firstName" />
+          <mat-error  *ngIf="hasError('firstName')">{{getFirstNameErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="half-width-row" appearance="legacy">
+          <mat-label for="lastName">Last Name (Optional)</mat-label>
+          <input matInput id="last_name_input" [attr.id]="'first_name_input'" formControlName="lastName" />
+        </mat-form-field>
+      </section>
+      <mat-form-field class="full-wdith-row" appearance="legacy">
+        <mat-label for="email">Email</mat-label>
+        <input matInput class="input-data" [attr.id]="'email_input'"  formControlName="email" />
+        <mat-error *ngIf="hasError('email')">{{getEmailErrorMessage()}}</mat-error>
+      </mat-form-field>
+  </mat-form>
+  </div>
+  <div class="space-between-global create-user-button-container">
+    <button mat-raised-button
+            id="cancel_button"
+            (click)="naviagteToUserSummary()">CANCEL
+    </button>
+    <button mat-raised-button
+            [ngClass]="{'activeButton': createUserForm.valid}"
+            id="add_new_user_button"
+            [disabled]="createUserForm.invalid"
+            (click)="sendForm()">ADD NEW USER
+    </button>
+
+  </div>
+</div>
